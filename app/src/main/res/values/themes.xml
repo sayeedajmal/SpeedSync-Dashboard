@@ -1,0 +1,10 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="Theme.SpeedSyncDashboard" parent="Theme.Material3.DayNight.NoActionBar">
+
+        <item name="android:fontFamily">@font/foncea</item>
+        <item name="android:background">@color/White</item>
+        <item name="android:textColor">@color/ThemeWhite</item>
+        <item name="android:statusBarColor">@color/transparent</item>
+    </style>
+</resources>

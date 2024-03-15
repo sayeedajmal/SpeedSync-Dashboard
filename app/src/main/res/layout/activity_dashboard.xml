@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Dashboard">
+
+    <me.ibrahimsn.lib.Speedometer
+        android:id="@+id/meter"
+        android:layout_width="347dp"
+        android:layout_height="290dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:soundEffectsEnabled="true"
+        app:borderColor="#501A62"
+        app:borderSize="12dp"
+        app:textColor="#D13472"
+        app:fillColor="#D13472"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:maxSpeed="100"
+        app:metricText="km/h" />
+
+    <TextView
+        android:id="@+id/SpeedLimit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="-60dp"
+        android:textSize="25sp"
+        android:textColor="#E91E63"
+        app:layout_constraintTop_toBottomOf="@+id/speedometer" />
+
+    <Spinner
+        android:id="@+id/Highway"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp" />
+
+    <com.google.android.material.slider.Slider
+        android:id="@+id/speedAdjust"
+        android:layout_width="match_parent"
+        android:layout_height="13dp"
+        android:layout_gravity="bottom"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:stepSize="1"
+        android:valueFrom="0"
+        android:valueTo="100"
+        app:thumbColor="#CF3471"
+        app:thumbStrokeColor="#CF3471"
+        app:thumbStrokeWidth="10dp"
+        app:tickColorActive="#CF3471"
+        app:tickColorInactive="#F5FF0909"
+        app:tickVisible="true"
+        app:trackColorActive="#CF3471"
+        app:trackColorInactive="#00FFFFFF" />
+</LinearLayout>
