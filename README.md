@@ -18,7 +18,7 @@ SpeedSync Dashboard is a Java project aimed at enhancing road safety by implemen
    git clone https://github.com/sayeedajmal/speedsync-dashboard.git
    ```
 
-2. Import the project into your preferred Java IDE (Eclipse, IntelliJ IDEA, etc.).
+2. Import the project into your preferred Java IDE (Android Studio).
 
 3. Configure environment variables:
 
@@ -35,6 +35,16 @@ SpeedSync Dashboard is a Java project aimed at enhancing road safety by implemen
 3. The software will automatically communicate with the RESTful API managed by the RTO office.
 4. Monitor the dashboard for visual alerts and notifications if speed limit violations occur.
 5. Take appropriate action to comply with traffic regulations and ensure road safety.
+
+## Frontend Applications 📱
+
+### Android Application (Simulation) 
+
+SpeedSync Dashboard includes an Android application for viewing real-time vehicle data and receiving notifications about speed limit violations. You can find the source code and installation instructions in the directory.
+
+## RESTful API Usage 🔗
+
+SpeedSync Dashboard exposes a RESTful API that allows frontend applications to interact with the system. You can find detailed API documentation and usage examples in the [API Documentation](API_Documentation.md) file.
 
 ## Contributing 🤝
 
