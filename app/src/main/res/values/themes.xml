@@ -4,7 +4,9 @@
 
         <item name="android:fontFamily">@font/foncea</item>
         <item name="android:background">@color/White</item>
+        <item name="snackbarTextViewStyle">@color/Green</item>
         <item name="android:textColor">@color/ThemeWhite</item>
-        <item name="android:statusBarColor">@color/transparent</item>
+        <item name="android:statusBarColor">@color/White</item>
+
     </style>
 </resources>
