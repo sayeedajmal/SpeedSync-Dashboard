@@ -38,13 +38,13 @@ SpeedSync Dashboard is a Java project aimed at enhancing road safety by implemen
 
 ## Frontend Applications 📱
 
-### Android Application (Simulation) 
+### Android Application (Simulation)
 
 SpeedSync Dashboard includes an Android application for viewing real-time vehicle data and receiving notifications about speed limit violations. You can find the source code and installation instructions in the directory.
 
 ## RESTful API Usage 🔗
 
-SpeedSync Dashboard exposes a RESTful API that allows frontend applications to interact with the system. You can find detailed API documentation and usage examples in the [API Documentation](API_Documentation.md) file.
+SpeedSync Dashboard exposes a RESTful API that allows frontend applications to interact with the system. You can find detailed API documentation and usage examples in the [API Documentation](https://github.com/sayeedajmal/SpeedSync_RestFul-API/blob/main/readme.md) file.
 
 ## Contributing 🤝
 
