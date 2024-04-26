@@ -14,8 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.snackbar.Snackbar;
 import com.strong.speedsyncdashboard.databinding.ActivityDashboardBinding;
 
-import org.json.JSONException;
-
+import java.net.HttpURLConnection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -82,6 +81,7 @@ public class Dashboard extends AppCompatActivity {
             // Setting speed on the speedometer
             BindDash.meter.setSpeed((int) slider.getValue(), 100L, null);
 
+
             // Checking if the speed exceeds the maximum speed limit
             if (slider.getValue() > maxSpeed) {
                 // Changing UI to indicate speed limit violation
@@ -106,17 +106,17 @@ public class Dashboard extends AppCompatActivity {
                             info.put("carColor", "Brown");
                             info.put("carModel", "MLX23");
 
-                            try {
-                                // The Data of Car fetched by a Govt API.
-                                boolean response = ChallanGeneration.GenerateChallan(Dashboard.this, "Uzair123", Highway, slider.getValue(), new Location(123, 123), info);
-                                if (response) {
-                                    Snackbar.make(BindDash.speedAdjust, "Challan Generated", Snackbar.LENGTH_SHORT).show();
+
+                            // The Data of Car fetched by a Govt API.
+                            ChallanGeneration.GenerateChallan(Dashboard.this, "SAYEED123", Highway, slider.getValue(), new Location(123, 123), info, httpStatusCode -> {
+                                // Handle the HTTP status code received from ChallanGeneration
+                                if (httpStatusCode == HttpURLConnection.HTTP_CREATED) {
+                                    Snackbar.make(BindDash.speedAdjust, "Challan generated successfully", Snackbar.LENGTH_SHORT).show();
                                 } else {
-                                    Snackbar.make(BindDash.speedAdjust, "Server Stopped", Snackbar.LENGTH_SHORT).show();
+                                    Snackbar.make(BindDash.speedAdjust, "Failed to generate challan, HTTP response code: " + httpStatusCode, Snackbar.LENGTH_SHORT).show();
                                 }
-                            } catch (JSONException e) {
-                                throw new RuntimeException("Runtime Error Dashboard" + e);
-                            }
+                            });
+
                             // Dismissing alert dialog and generating challan after countdown
                             SpeedLimitAlertDialog.dismissAlertDialog();
                         }
