@@ -12,9 +12,10 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.snackbar.Snackbar;
+import com.strong.speedsyncdashboard.Network.NetworkChangeReceiver;
+import com.strong.speedsyncdashboard.Network.NetworkUtils;
 import com.strong.speedsyncdashboard.databinding.ActivityDashboardBinding;
 
-import java.net.HttpURLConnection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -37,9 +38,11 @@ public class Dashboard extends AppCompatActivity {
         BindDash = ActivityDashboardBinding.inflate(getLayoutInflater());
         setContentView(BindDash.getRoot());
 
+        // Register network callback to monitor connectivity changes
+        NetworkChangeReceiver.registerNetworkCallback(this);
+
         // Array of highways to be displayed in the highway spinner
         String[] highwayList = {"Select", "NH 44", "NH 19", "NH 1100", "NH 67", "NH 340"};
-
         // Creating an ArrayAdapter for the highway spinner
         ArrayAdapter<String> highwayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, highwayList);
         BindDash.Highway.setAdapter(highwayAdapter);
@@ -55,6 +58,7 @@ public class Dashboard extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 // Getting the selected highway
                 Highway = highwayList[position];
+
 
                 // Resetting lane selection flag and speedometer values
                 laneSelected = false;
@@ -129,16 +133,7 @@ public class Dashboard extends AppCompatActivity {
                                 info.put("carColor", "Brown");
                                 info.put("carModel", "MLX23");
 
-                                // Generate challan using a hypothetical government API
-                                ChallanGeneration.GenerateChallan(Dashboard.this, "SAYEED123", Highway, slider.getValue(), new Location(123, 123), info, httpStatusCode -> {
-                                    // Handle HTTP response code from challan generation
-                                    if (httpStatusCode == HttpURLConnection.HTTP_CREATED) {
-                                        Snackbar.make(BindDash.speedAdjust, "Challan generated successfully", Snackbar.LENGTH_SHORT).show();
-                                    } else {
-                                        Snackbar.make(BindDash.speedAdjust, "Failed to generate challan, HTTP response code: " + httpStatusCode, Snackbar.LENGTH_SHORT).show();
-                                    }
-                                });
-
+                                NetworkUtils.checkAndStoreDataToSQLite(Dashboard.this, "SAYEED123", Highway, slider.getValue(), new Location(123, 123), info);
                                 // Dismiss alert dialog after countdown
                                 SpeedLimitAlertDialog.dismissAlertDialog();
                             }

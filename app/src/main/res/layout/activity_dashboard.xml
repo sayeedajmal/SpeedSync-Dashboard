@@ -89,21 +89,22 @@
     <com.google.android.material.slider.Slider
         android:id="@+id/speedAdjust"
         android:layout_width="match_parent"
-        android:layout_height="13dp"
+        android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:layout_margin="5dp"
+        android:background="@color/ThemeWhite"
+        android:backgroundTint="@color/transparent"
+        android:padding="0dp"
         android:stepSize="1"
         android:valueFrom="0"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Highway"
+        app:layout_constraintTop_toBottomOf="@+id/Lane"
         app:thumbColor="@color/Green"
         app:thumbStrokeColor="@color/Green"
-        app:thumbStrokeWidth="10dp"
         app:tickColorActive="@color/Green"
         app:tickColorInactive="@color/Green"
-        app:tickVisible="true"
-        app:trackColorActive="@color/OrangeRed"
-        app:trackColorInactive="#00FFFFFF" />
+        app:tickRadiusActive="10dp"
+        app:tickVisible="true" />
 </androidx.constraintlayout.widget.ConstraintLayout>
