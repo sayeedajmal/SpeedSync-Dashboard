@@ -17,6 +17,7 @@
         app:borderColor="#501A62"
         app:borderSize="12dp"
         app:fillColor="@color/Green"
+        app:layout_constraintBottom_toTopOf="@+id/Highway"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -37,14 +38,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/meter" />
 
+    <!--    METER -->
     <TextView
         android:id="@+id/highText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:text="HighWay"
+        android:text="Highway"
         android:textColor="@color/Green"
         android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/laneText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/meter" />
 
@@ -58,6 +61,30 @@
         app:layout_constraintBottom_toBottomOf="@+id/highText"
         app:layout_constraintStart_toEndOf="@+id/highText"
         app:layout_constraintTop_toTopOf="@+id/highText" />
+
+    <!--    LANE-->
+    <TextView
+        android:id="@+id/laneText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Lane"
+        android:textColor="@color/Green"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/speedAdjust"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/highText" />
+
+    <Spinner
+        android:id="@+id/Lane"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginStart="8dp"
+        android:textColor="@color/Green"
+        app:layout_constraintBottom_toBottomOf="@+id/laneText"
+        app:layout_constraintStart_toEndOf="@+id/laneText"
+        app:layout_constraintTop_toTopOf="@+id/laneText" />
 
     <com.google.android.material.slider.Slider
         android:id="@+id/speedAdjust"
