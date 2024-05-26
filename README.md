@@ -8,7 +8,8 @@ SpeedSync Dashboard is a Java project aimed at enhancing road safety by implemen
 - Detection of speed limit violations
 - Visual alerts and notifications for drivers
 - Integration with a RESTful API managed by the RTO office
-- Authentication and authorization mechanisms for secure communication
+- Storing Challan while the Network Connectivity Lost
+- Syncing the Challan when Newtork Connectivity Acive
 
 ## Installation and Setup 🚀
 
