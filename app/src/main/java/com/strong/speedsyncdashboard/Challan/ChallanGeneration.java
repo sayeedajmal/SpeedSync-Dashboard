@@ -21,9 +21,9 @@ public class ChallanGeneration {
 
     static String URI = "https://speedsyncrestful-production.up.railway.app/api/v1/vehicles/challan";
 
-    public static void GenerateChallan(Context context, String carName, String Highway, float currentSpeed, Location location, Map<String, Object> info, ChallanGenerationCallback callback) {
+    public static void GenerateChallan(Context context, String carNumber, String Highway, float currentSpeed, Location location, Map<String, Object> info, ChallanGenerationCallback callback) {
         Gson json = new Gson();
-        VehicleInfo vehicleInfo = new VehicleInfo(carName, Highway, currentSpeed, location, info);
+        VehicleInfo vehicleInfo = new VehicleInfo(carNumber, Highway, currentSpeed, location, info);
         String jsonString = json.toJson(vehicleInfo);
         new GenerateChallanTask(callback).execute(jsonString);
     }

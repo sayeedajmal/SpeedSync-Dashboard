@@ -14,23 +14,23 @@ import java.util.Map;
 
 public class NetworkUtils {
 
-    public static void checkAndStoreDataToSQLite(Context context, String carName, String highway, float currentSpeed, Location location, Map<String, Object> info) {
+    public static void checkAndStoreDataToSQLite(Context context, String carNumber, String highway, float currentSpeed, Location location, Map<String, Object> info) {
         DBHelper mDBHelper = new DBHelper(context);
 
         if (isConnected(context)) {
-            ChallanGeneration.GenerateChallan(context, carName, highway, currentSpeed, location, info, httpStatusCode -> {
+            ChallanGeneration.GenerateChallan(context, carNumber, highway, currentSpeed, location, info, httpStatusCode -> {
                 // Handle response code
                 if (httpStatusCode == HttpURLConnection.HTTP_CREATED) {
                     Toast.makeText(context, "Challan Generated", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(context, "Storing Challan", Toast.LENGTH_SHORT).show();
-                    mDBHelper.insertData(carName, highway, currentSpeed, location.getLatitude(), location.getLongitude(), info);
+                    mDBHelper.insertData(carNumber, highway, currentSpeed, location.getLatitude(), location.getLongitude(), info);
                 }
             });
         } else {
             // If not connected, store data to SQLite
             Toast.makeText(context, "Storing Challan", Toast.LENGTH_SHORT).show();
-            mDBHelper.insertData(carName, highway, currentSpeed, location.getLatitude(), location.getLongitude(), info);
+            mDBHelper.insertData(carNumber, highway, currentSpeed, location.getLatitude(), location.getLongitude(), info);
         }
     }
 
