@@ -122,7 +122,7 @@ public class Dashboard extends AppCompatActivity {
                             @Override
                             public void onTick(long millisUntilFinished) {
                                 // Display alert dialog for speed limit violation
-                                SpeedLimitAlertDialog.showAlertDialog(Dashboard.this, "You Have Only 10 Seconds \nYou Have Only 10 Seconds \nYou Have Only 10 Seconds \n");
+                                SpeedLimitAlertDialog.showAlertDialog(Dashboard.this, "You have only 10 Seconds to Slow Down Your Car Speed.Else Challan Will Be Generated");
                             }
 
                             @Override
