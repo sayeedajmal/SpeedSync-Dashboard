@@ -1,6 +1,5 @@
 package com.strong.speedsyncdashboard.Challan;
 
-import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -21,9 +20,9 @@ public class ChallanGeneration {
 
     static String URI = "https://speedsyncrestful-api-production.up.railway.app/api/v1/vehicles/challan";
 
-    public static void GenerateChallan(Context context, String carName, String Highway, float currentSpeed, Location location, Map<String, Object> info, ChallanGenerationCallback callback) {
+    public static void GenerateChallan(String carNumber, String Highway, float currentSpeed, Location location, Map<String, Object> info, String email, ChallanGenerationCallback callback) {
         Gson json = new Gson();
-        VehicleInfo vehicleInfo = new VehicleInfo(carName, Highway, currentSpeed, location, info);
+        VehicleInfo vehicleInfo = new VehicleInfo(carNumber, Highway, currentSpeed, location, info, email);
         String jsonString = json.toJson(vehicleInfo);
         new GenerateChallanTask(callback).execute(jsonString);
     }

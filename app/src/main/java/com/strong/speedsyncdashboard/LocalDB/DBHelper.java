@@ -18,6 +18,8 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String TABLE_CHALLAN = "challan";
     private static final String COLUMN_ID = "id";
     private static final String COLUMN_CAR_NAME = "car_name";
+    private static final String COLUMN_CAR_EMAIL = "email";
+
     private static final String COLUMN_HIGHWAY = "highway";
     private static final String COLUMN_CURRENT_SPEED = "current_speed";
     private static final String COLUMN_LATITUDE = "latitude";
@@ -40,10 +42,11 @@ public class DBHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void insertData(String carName, String highway, float currentSpeed, double latitude, double longitude, Map<String, Object> info) {
+    public void insertData(String carNumber, String highway, float currentSpeed, double latitude, double longitude, Map<String, Object> info, String email) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(COLUMN_CAR_NAME, carName);
+        values.put(COLUMN_CAR_NAME, carNumber);
+        values.put(COLUMN_CAR_EMAIL, email);
         values.put(COLUMN_HIGHWAY, highway);
         values.put(COLUMN_CURRENT_SPEED, currentSpeed);
         values.put(COLUMN_LATITUDE, latitude);
@@ -58,9 +61,9 @@ public class DBHelper extends SQLiteOpenHelper {
         return db.rawQuery("SELECT * FROM " + TABLE_CHALLAN, null);
     }
 
-    public void deleteData(String carName, String highway, float currentSpeed, double latitude, double longitude, String infoJson) {
+    public void deleteData(String carNumber, String highway, float currentSpeed, double latitude, double longitude, String infoJson) {
         SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(TABLE_CHALLAN, COLUMN_CAR_NAME + "=? AND " + COLUMN_HIGHWAY + "=? AND " + COLUMN_CURRENT_SPEED + "=? AND " + COLUMN_LATITUDE + "=? AND " + COLUMN_LONGITUDE + "=? AND " + COLUMN_INFO + "=?", new String[]{carName, highway, String.valueOf(currentSpeed), String.valueOf(latitude), String.valueOf(longitude), infoJson});
+        db.delete(TABLE_CHALLAN, COLUMN_CAR_NAME + "=? AND " + COLUMN_HIGHWAY + "=? AND " + COLUMN_CURRENT_SPEED + "=? AND " + COLUMN_LATITUDE + "=? AND " + COLUMN_LONGITUDE + "=? AND " + COLUMN_INFO + "=?", new String[]{carNumber, highway, String.valueOf(currentSpeed), String.valueOf(latitude), String.valueOf(longitude), infoJson});
         db.close();
     }
 

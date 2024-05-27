@@ -34,19 +34,20 @@ public class DataSyncWorker extends Worker {
         Cursor cursor = dbHelper.getAllData();
         if (cursor != null && cursor.moveToFirst()) {
             do {
-                @SuppressLint("Range") String carName = cursor.getString(cursor.getColumnIndex("car_name"));
+                @SuppressLint("Range") String carNumber = cursor.getString(cursor.getColumnIndex("car_name"));
                 @SuppressLint("Range") String highway = cursor.getString(cursor.getColumnIndex("highway"));
                 @SuppressLint("Range") float currentSpeed = cursor.getFloat(cursor.getColumnIndex("current_speed"));
                 @SuppressLint("Range") double latitude = cursor.getDouble(cursor.getColumnIndex("latitude"));
                 @SuppressLint("Range") double longitude = cursor.getDouble(cursor.getColumnIndex("longitude"));
                 @SuppressLint("Range") String infoJson = cursor.getString(cursor.getColumnIndex("info"));
+                @SuppressLint("Range") String email = cursor.getString(cursor.getColumnIndex("email"));
 
                 Map<String, Object> info = new Gson().fromJson(infoJson, HashMap.class);
 
-                ChallanGeneration.GenerateChallan(getApplicationContext(), carName, highway, currentSpeed, new Location(latitude, longitude), info, httpStatusCode -> {
+                ChallanGeneration.GenerateChallan(carNumber, highway, currentSpeed, new Location(latitude, longitude), info, email, httpStatusCode -> {
                     if (httpStatusCode == HttpURLConnection.HTTP_CREATED) {
                         Toast.makeText(getApplicationContext(), "Challan Synced To Cloud", Toast.LENGTH_SHORT).show();
-                        dbHelper.deleteData(carName, highway, currentSpeed, latitude, longitude, infoJson);
+                        dbHelper.deleteData(carNumber, highway, currentSpeed, latitude, longitude, infoJson);
                     } else
                         Toast.makeText(getApplicationContext(), "Challan Not Synced", Toast.LENGTH_SHORT).show();
                 });

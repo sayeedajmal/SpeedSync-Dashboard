@@ -123,7 +123,7 @@ public class Dashboard extends AppCompatActivity {
                             @Override
                             public void onTick(long millisUntilFinished) {
                                 // Display alert dialog for speed limit violation
-                                SpeedLimitAlertDialog.showAlertDialog(Dashboard.this, "You Have Only 10 Seconds \nYou Have Only 10 Seconds \nYou Have Only 10 Seconds \n");
+                                SpeedLimitAlertDialog.showAlertDialog(Dashboard.this, "You have only 10 Seconds to Slow down the Car Speed. Otherwise Challan Will be Generated ");
                             }
 
                             @Override
@@ -132,8 +132,9 @@ public class Dashboard extends AppCompatActivity {
                                 Map<String, Object> info = new HashMap<>();
                                 info.put("carColor", "Brown");
                                 info.put("carModel", "MLX23");
+                                String email = "sayeedajmala06@gmail.com";
 
-                                NetworkUtils.checkAndStoreDataToSQLite(Dashboard.this, "SAYEED123", Highway, slider.getValue(), new Location(123, 123), info);
+                                NetworkUtils.checkAndStoreDataToSQLite(Dashboard.this, "KA32M5873", Highway, slider.getValue(), new Location(123, 123), info, email);
                                 // Dismiss alert dialog after countdown
                                 SpeedLimitAlertDialog.dismissAlertDialog();
                             }
