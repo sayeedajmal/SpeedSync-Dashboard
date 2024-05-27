@@ -19,7 +19,7 @@ public class ChallanGeneration {
         void onChallanGenerated(int httpStatusCode);
     }
 
-    static String URI = "https://speedsyncrestful-api-production.up.railway.app/api/v1/vehicles/challan";
+    static String URI = "https://speedsyncrestful-production.up.railway.app/api/v1/vehicles/challan";
 
     public static void GenerateChallan(Context context, String carName, String Highway, float currentSpeed, Location location, Map<String, Object> info, ChallanGenerationCallback callback) {
         Gson json = new Gson();
