@@ -40,10 +40,11 @@ public class DataSyncWorker extends Worker {
                 @SuppressLint("Range") double latitude = cursor.getDouble(cursor.getColumnIndex("latitude"));
                 @SuppressLint("Range") double longitude = cursor.getDouble(cursor.getColumnIndex("longitude"));
                 @SuppressLint("Range") String infoJson = cursor.getString(cursor.getColumnIndex("info"));
+                @SuppressLint("Range") String email = cursor.getString(cursor.getColumnIndex("email"));
 
                 Map<String, Object> info = new Gson().fromJson(infoJson, HashMap.class);
 
-                ChallanGeneration.GenerateChallan(getApplicationContext(), carNumber, highway, currentSpeed, new Location(latitude, longitude), info, httpStatusCode -> {
+                ChallanGeneration.GenerateChallan(getApplicationContext(), carNumber, email, highway, currentSpeed, new Location(latitude, longitude), info, httpStatusCode -> {
                     if (httpStatusCode == HttpURLConnection.HTTP_CREATED) {
                         Toast.makeText(getApplicationContext(), "Challan Synced To Cloud", Toast.LENGTH_SHORT).show();
                         dbHelper.deleteData(carNumber, highway, currentSpeed, latitude, longitude, infoJson);

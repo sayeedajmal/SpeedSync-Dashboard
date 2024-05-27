@@ -18,6 +18,8 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String TABLE_CHALLAN = "challan";
     private static final String COLUMN_ID = "id";
     private static final String COLUMN_CAR_NUMBER = "car_number";
+    private static final String COLUMN_CAR_EMAIL = "email";
+
     private static final String COLUMN_HIGHWAY = "highway";
     private static final String COLUMN_CURRENT_SPEED = "current_speed";
     private static final String COLUMN_LATITUDE = "latitude";
@@ -30,7 +32,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String CREATE_CHALLAN_TABLE = "CREATE TABLE " + TABLE_CHALLAN + "(" + COLUMN_ID + " INTEGER PRIMARY KEY," + COLUMN_CAR_NUMBER + " TEXT," + COLUMN_HIGHWAY + " TEXT," + COLUMN_CURRENT_SPEED + " REAL," + COLUMN_LATITUDE + " REAL," + COLUMN_LONGITUDE + " REAL," + COLUMN_INFO + " TEXT" + ")";
+        String CREATE_CHALLAN_TABLE = "CREATE TABLE " + TABLE_CHALLAN + "(" + COLUMN_ID + " INTEGER PRIMARY KEY," + COLUMN_CAR_NUMBER + " TEXT," + COLUMN_CAR_EMAIL + " TEXT," + COLUMN_HIGHWAY + " TEXT," + COLUMN_CURRENT_SPEED + " REAL," + COLUMN_LATITUDE + " REAL," + COLUMN_LONGITUDE + " REAL," + COLUMN_INFO + " TEXT" + ")";
         db.execSQL(CREATE_CHALLAN_TABLE);
     }
 
@@ -40,10 +42,11 @@ public class DBHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void insertData(String carNumber, String highway, float currentSpeed, double latitude, double longitude, Map<String, Object> info) {
+    public void insertData(String carNumber, String email, String highway, float currentSpeed, double latitude, double longitude, Map<String, Object> info) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(COLUMN_CAR_NUMBER, carNumber);
+        values.put(COLUMN_CAR_EMAIL, email);
         values.put(COLUMN_HIGHWAY, highway);
         values.put(COLUMN_CURRENT_SPEED, currentSpeed);
         values.put(COLUMN_LATITUDE, latitude);

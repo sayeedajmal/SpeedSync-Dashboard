@@ -20,7 +20,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * This class represents a dashboard activity that allows users to monitor and adjust their speed on different highways.
+ * This class represents a dashboard activity that allows users to monitor and
+ * adjust their speed on different highways.
  */
 public class Dashboard extends AppCompatActivity {
 
@@ -59,12 +60,10 @@ public class Dashboard extends AppCompatActivity {
                 // Getting the selected highway
                 Highway = highwayList[position];
 
-
                 // Resetting lane selection flag and speedometer values
                 laneSelected = false;
                 BindDash.meter.setSpeed(0, 100L, null);
                 BindDash.SpeedLimit.setText(null);
-
 
                 // Populating the lane spinner based on the selected highway
                 String[] availableLanes = getAvailableLanes(Highway);
@@ -132,8 +131,8 @@ public class Dashboard extends AppCompatActivity {
                                 Map<String, Object> info = new HashMap<>();
                                 info.put("carColor", "Brown");
                                 info.put("carModel", "MLX23");
-
-                                NetworkUtils.checkAndStoreDataToSQLite(Dashboard.this, "SAYEED123", Highway, slider.getValue(), new Location(123, 123), info);
+                                String email = "sayeedajmala06@gmail.com";
+                                NetworkUtils.checkAndStoreDataToSQLite(Dashboard.this, email, "KA32M433", Highway, slider.getValue(), new Location(123, 123), info);
                                 // Dismiss alert dialog after countdown
                                 SpeedLimitAlertDialog.dismissAlertDialog();
                             }
